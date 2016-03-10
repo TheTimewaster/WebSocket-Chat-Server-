@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>WDSTechtalkWebsockets</groupId>
+  <artifactId>WDSTechtalkWebsockets</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  	<properties>
+		<jettyVersion>9.3.6.v20151106</jettyVersion>
+	</properties>
+  <dependencies>
+  	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.0.1</version>
+		<scope>provided</scope>
+	</dependency>
+  	<dependency>
+  		<!-- JSON wrapper, de- and serializer -->
+		<groupId>org.json</groupId>
+		<artifactId>json</artifactId>
+		<version>LATEST</version>
+	</dependency>
+	<dependency>
+		<!-- base websocket classes for implementing ws-server  -->
+		<groupId>javax.websocket</groupId>
+		<artifactId>javax.websocket-api</artifactId>
+		<version>1.1</version>
+	</dependency>
+	<dependency>
+		<!-- base class for implementing ws client -->
+	  <groupId>org.eclipse.jetty.websocket</groupId>
+	  <artifactId>websocket-client</artifactId>
+	  <version>${jettyVersion}</version>
+	</dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+	   	<plugin>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-maven-plugin</artifactId>
+			<version>${jettyVersion}</version>
+			<configuration>
+				<contextPath>/</contextPath>
+			</configuration>
+		</plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
