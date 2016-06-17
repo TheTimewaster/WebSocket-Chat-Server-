@@ -14,7 +14,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 @ServerEndpoint(value = "/chat")
 public class HelloWorldEndpoint
@@ -46,9 +46,9 @@ public class HelloWorldEndpoint
 	{
 			synchronized (_sessions)
 			{
-				JSONObject jsonObj = new JSONObject();
-				jsonObj.put("timestamp", SDF.format(new Date()));
-				jsonObj.put("message",message);
+				JsonObject jsonObj = new JsonObject();
+				jsonObj.addProperty("timestamp", SDF.format(new Date()));
+				jsonObj.addProperty("message",message);
 				
 				// send message to all open sessions
 				for(Session client : _sessions)
